@@ -99,7 +99,7 @@
                             <tr>
                               <th scope="col">Image</th>
                               <th scope="col">Name</th>
-                              <th scope="col">Price</th>
+                              <th scope="col">Pricio</th>
                               <th scope="col">Qty</th>
                               <th scope="col">Subtotal</th>
                               <th scope="col">...</th>
