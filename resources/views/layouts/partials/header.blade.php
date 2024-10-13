@@ -15,7 +15,7 @@
                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                 <!-- RD Navbar Brand-->
                 <div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark"
-                      src="images/logo-198x66.png" alt="" width="198" height="66" /></a></div>
+                      src="images/mary.png" alt="" width="198" height="66" /></a></div>
               </div>
               <div class="rd-navbar-right rd-navbar-nav-wrap">
                 <div class="rd-navbar-aside">
@@ -52,6 +52,13 @@
                     <li class="rd-nav-item"><a class="rd-nav-link" href="contacts.html">Contact</a>
                     </li>
 
+                    @guest
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('login') }}">Iniciar Sesion</a>
+                    </li>
+
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('register') }}">Registrarse</a>
+                    </li>
+                    @else
                     <li class="rd-nav-item">
                       <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
@@ -67,6 +74,7 @@
                       </div>
 
                     </li>
+                    @endguest
 
                   </ul>
                 </div>

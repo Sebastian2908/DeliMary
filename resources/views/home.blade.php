@@ -1,23 +1,23 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <!-- Swiper-->
+    @include('layouts.partials.slider')
+    <!-- What We Offer-->
+    @include('layouts.partials.categories')
+    <!-- Section CTA-->
+    @include('layouts.partials.banner')
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <!-- Our Shop-->
+    @include('layouts.partials.products-home')
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- What We Offer-->
+    @include('layouts.partials.comments')
+
+    <!-- gallery -->
+    @include('layouts.partials.gallery')
+
+
+    <!-- Section Services  Last section-->
+     @include('layouts.partials.services')
 @endsection
