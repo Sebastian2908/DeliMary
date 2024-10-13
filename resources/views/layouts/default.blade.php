@@ -35,7 +35,7 @@
             <div class="col-sm-6 col-md-7 col-lg-4 col-xl-4">
               <div class="row row-30 align-items-center text-lg-center">
                 <div class="col-md-7 col-xl-6"><a class="brand" href="index.html"><img
-                      src="images/logo-inverse-198x66.png" alt="" width="198" height="66" /></a></div>
+                      src="images/image.png" alt="" width="198" height="66" /></a></div>
                 <div class="col-md-5 col-xl-6">
                   <div class="iso-1"><span><img src="images/like-icon-58x25.png" alt="" width="58"
                         height="25" /></span><span class="iso-1-big">9.4k</span></div>
