@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="es">
 
 <head>
-  <title>Home</title>
+  <title>{{ config('app.name', 'DeliMary') }}</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport"
     content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="{{asset('images/faviconArepa.png')}}" type="image/x-icon">
   <!-- Stylesheets-->
   <link rel="stylesheet" type="text/css"
     href="//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,500,600,700,900%7CRaleway:500">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('css/fonts.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
 
@@ -77,7 +77,7 @@
               <!-- Rights-->
               <p class="rights"><span>&copy;&nbsp;</span><span
                   class="copyright-year"></span><span></span><span>.&nbsp;</span><span>All Rights Reserved.</span><span>
-                  Design&nbsp;by&nbsp;<a href="https://www.templatemonster.com">TemplateMonster</a></span></p>
+                  Design&nbsp;by&nbsp;<a href="#">DeliMary</a></span></p>
             </div>
           </div>
         </div>
@@ -87,8 +87,8 @@
   <!-- Global Mailform Output-->
   <div class="snackbars" id="form-output-global"></div>
   <!-- Javascript-->
-  <script src="js/core.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="{{asset('js/core.min.js')}}"></script>
+  <script src="{{asset('js/script.js')}}"></script>
   <!-- coded by Himic-->
 </body>
 

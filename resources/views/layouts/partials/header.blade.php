@@ -66,7 +66,7 @@
                       {{auth()->user()->name}}
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">My Orders</a>
+                      <a class="dropdown-item" href="#">Mis Pedidos</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

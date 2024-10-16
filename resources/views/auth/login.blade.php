@@ -24,7 +24,7 @@
 
               <div class="col-md-6">
                 <div class="form-wrap">
-                  <label for="password" class="form-label">Password</label>
+                  <label for="password" class="form-label">Contraseña</label>
 
                   <input id="password" type="password" class="form-input" name="password">
 
