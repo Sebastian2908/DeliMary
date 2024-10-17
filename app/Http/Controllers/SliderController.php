@@ -12,7 +12,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        return view('sliders.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        //
+        return view('sliders.create');
     }
 
     /**
@@ -28,7 +28,13 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'link' => 'max:255',
+            'text_link' => 'max:255',
+            'image' => 'required|mimes:jpg,jpeg,png|max:1024|required'
+        ]);
     }
 
     /**
