@@ -12,9 +12,9 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::orderBy('id','desc')->paginate(5);
+        $sliders = Slider::orderBy('id', 'desc')->paginate(5);
         /*$sliders = collect();*/
-        return view('sliders.index',compact('sliders'));
+        return view('sliders.index', compact('sliders'));
     }
 
     /**
@@ -72,7 +72,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return view('sliders.edit',compact('slider'));
+        return view('sliders.edit', compact('slider'));
     }
 
     /**
@@ -96,9 +96,9 @@ class SliderController extends Controller
 
         if ($request->hasFile('image')) {
 
-            $path = public_path().'/'.$slider->image;
+            $path = public_path() . '/' . $slider->image;
 
-            if (file_exists($path) && $slider->image!==null) {
+            if (file_exists($path) && $slider->image !== null) {
                 unlink($path);
             }
 
@@ -120,6 +120,15 @@ class SliderController extends Controller
      */
     public function destroy(Slider $slider)
     {
-        //
+        $path = public_path() .'/'. $slider->image;
+
+        if (file_exists($path) && $slider->image !== null) {
+            unlink($path);
+        }
+
+        $slider->delete();
+
+        return redirect()->route('sliders.index')
+            ->with(['msg' => 'Slider eliminado correctamente']);
     }
 }

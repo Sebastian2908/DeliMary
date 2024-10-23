@@ -213,6 +213,31 @@
     <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
     <script src="{{asset('admin/plugins/sweetalert2/sweetalert2.all.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+
+            $(".confirm-form").click(function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: '¿Estas segur@?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'error',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Si, eliminar esto!',
+                    cancelButtonText: 'Cancelar'
+
+                }).then((result) => {
+                    if (result.value) {
+                        this.submit();
+                    }
+                })
+
+            })
+        })
+    </script>
 
 </body>
 
