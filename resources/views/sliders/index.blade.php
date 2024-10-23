@@ -6,7 +6,7 @@
 
     <div class="card shadow">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h3 class="m-0 font-weight-bold text-primary"> Categorias</h3>
+            <h3 class="m-0 font-weight-bold text-primary">Sliders</h3>
             <a href="{{route('sliders.create')}}" class="btn btn-primary">Crear</a>
 
         </div>
@@ -16,32 +16,38 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Image</th>
-
-                        <th scope="col">Name</th>
-                        <th scope="col">Icon</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Texto del Link</th>
                         <th scope="col">...</th>
                         <th scope="col">...</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @forelse ($sliders as $slider)
                     <tr>
-                        <th scope="row">0</th>
+                        <th scope="row">{{$slider->id}}</th>
                         <td>
-                            <img src="#" width="80">
+                            <img src="{{asset($slider->image)}}" width="80">
 
                         </td>
-                        <td>Name</td>
-                        <td></td>
+                        <td>{{$slider->image}}</td>
+                        <td>{{$slider->description}}</td>
+                        <td>{{$slider->link}}</td>
+                        <td>{{$slider->text_link}}</td>
 
                         <td>
-                            <a class="btn btn-primary btn-sm" href="#">
+                            <a class="btn btn-primary btn-sm" href="{{route('sliders.edit',$slider->id)}}">
                                 <span class="fas fa-edit"></span>
                             </a>
                         </td>
                         <td>
 
-                            <form action="#" method="POST" class="confirm-form mb-0">
+                            <form action="{{route('sliders.destroy',$slider->id)}}"" method="POST" class="confirm-form mb-0">
+                                @csrf
+                                @method('DELETE')
 
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <span class="fas fa-trash"></span>
@@ -50,10 +56,18 @@
                             </form>
                         </td>
                     </tr>
+                    @empty
 
+                    <tr>
+                        <td colspan="10">Sin Registros</td>
+                    </tr>
 
+                    @endforelse
                 </tbody>
             </table>
+            <div class="card-footer">
+                {{$sliders->links()}}
+            </div>
         </div>
         <div class="card-footer">
 

@@ -12,7 +12,9 @@ class SliderController extends Controller
      */
     public function index()
     {
-        return view('sliders.index');
+        $sliders = Slider::orderBy('id','desc')->paginate(5);
+        /*$sliders = collect();*/
+        return view('sliders.index',compact('sliders'));
     }
 
     /**
@@ -28,13 +30,33 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'title' => 'required|max:255',
             'description' => 'required|max:255',
             'link' => 'max:255',
             'text_link' => 'max:255',
             'image' => 'required|mimes:jpg,jpeg,png|max:1024|required'
         ]);
+
+        // Crear Slider (Aqui se sube un slider a la base de datos)
+        $slider = new Slider();
+        $slider->title = $request->get('title');
+        $slider->description = $request->get('description');
+        $slider->link = $request->get('link');
+        $slider->text_link = $request->get('text_link');
+
+        if ($request->hasFile('image')) {
+            $imagen = $request->file('image');
+            $nameImage = "images/sliders/" . uniqid() . '.' . $imagen->guessExtension();
+            $ruta = public_path("images/sliders/");
+            $imagen->move($ruta, $nameImage);
+            $slider->image = $nameImage;
+        }
+
+        $slider->save();
+
+        return redirect()->route('sliders.index')
+            ->with(['msg' => 'Slider creado correctamente']);
     }
 
     /**
@@ -50,7 +72,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+        return view('sliders.edit',compact('slider'));
     }
 
     /**
@@ -58,7 +80,39 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'link' => 'max:255',
+            'text_link' => 'max:255',
+            'image' => 'image|mimes:jpg,jpeg,png|max:1024|nullable'
+        ]);
+
+        // Crear Slider (Aqui se sube un slider a la base de datos)
+        $slider->title = $request->get('title');
+        $slider->description = $request->get('description');
+        $slider->link = $request->get('link');
+        $slider->text_link = $request->get('text_link');
+
+        if ($request->hasFile('image')) {
+
+            $path = public_path().'/'.$slider->image;
+
+            if (file_exists($path) && $slider->image!==null) {
+                unlink($path);
+            }
+
+            $imagen = $request->file('image');
+            $nameImage = "images/sliders/" . uniqid() . '.' . $imagen->guessExtension();
+            $ruta = public_path("images/sliders/");
+            $imagen->move($ruta, $nameImage);
+            $slider->image = $nameImage;
+        }
+
+        $slider->update();
+
+        return redirect()->route('sliders.index')
+            ->with(['msg' => 'Slider editado correctamente']);
     }
 
     /**
